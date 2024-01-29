@@ -238,7 +238,11 @@ $consulta=mysqli_query($conexion,"SELECT usuarios.idusuarios ID1, persona.dni, u
           <th align="left"><?php echo $row['email']; ?></th>
           <th><?php echo $row['telefono']; ?></th>
           <th><?php echo $row['rol']; ?></th>
-          <th><?php echo $row['estado']; ?></th>
+
+          <th style="color: <?php echo ($row['estado'] === 'ACTIVO') ? 'black' : 'red'; ?>">
+              <?php echo $row['estado']; ?>
+          </th>
+          
           <th align="left"><?php echo $row['area']; ?></th>
         </tr>
         <?php
