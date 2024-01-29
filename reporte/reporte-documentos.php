@@ -255,7 +255,7 @@ $result = mysqli_num_rows($consulta);
         </tr>
       </table>
       <br>
-      <p><?php echo $type;?></p>
+      <!-- <p>?php echo $type;?></p> -->
       <span class="h2">DETALLE DE TABLA DE COLABORADORES REGISTRADOS:</span>
       <!-- <br> -->
       <br>

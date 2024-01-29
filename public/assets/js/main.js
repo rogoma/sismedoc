@@ -2267,7 +2267,7 @@ $("#FormFotop").on('submit', function(e){
     tipo = $("#cboreport1").val();
     d = convertirfecha(desde);
     h = convertirfecha(hasta);
-    alert(d+' '+h)
+    // alert(d+' '+h)
     if(tipo == "0"){
       alert('POR FAVOR SELECCIONE LA FORMA DEL REPORTE');
       $("#cboreport1").focus();

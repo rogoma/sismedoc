@@ -232,14 +232,14 @@ $consulta=mysqli_query($conexion,"SELECT usuarios.idusuarios ID1, persona.dni, u
 			 		?>
         <tr height="20">
           <th><?php echo $row['ID1']; ?></th>
-          <th><?php echo $row['dni']; ?></th>
-          <th><?php echo $row['nombre']; ?></th>
-          <th><?php echo $row['Datos']; ?></th>
-          <th><?php echo $row['email']; ?></th>
+          <th align="left"><?php echo $row['dni']; ?></th>
+          <th align="left"><?php echo $row['nombre']; ?></th>
+          <th align="left"><?php echo $row['Datos']; ?></th>
+          <th align="left"><?php echo $row['email']; ?></th>
           <th><?php echo $row['telefono']; ?></th>
           <th><?php echo $row['rol']; ?></th>
           <th><?php echo $row['estado']; ?></th>
-          <th><?php echo $row['area']; ?></th>
+          <th align="left"><?php echo $row['area']; ?></th>
         </tr>
         <?php
 					}
