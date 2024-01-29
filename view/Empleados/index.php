@@ -151,7 +151,7 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                      <label>ÁREA (*)</label>
+                      <label>DEPENDENCIA (*)</label>
                         <select style="font-weight:600;font-size:18px" class="form-control" name="areaE" id="areaE">
                           <?php while($datos=mysqli_fetch_array($areaE)) { ?>
                             <option value="<?php echo $datos['ID']  ?>"> <?php echo $datos['area'] ?></optiomn>
@@ -374,7 +374,7 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>&nbsp;&nbsp;&nbsp;
         <li class="nav-item">
-        <h3 style="margin:8px 0;font-size:20px;font-weight:600">ÁREA: <?php echo $area['area'];?></h3>
+        <h3 style="margin:8px 0;font-size:20px;font-weight:600">DEPENDENCIA: <?php echo $area['area'];?></h3>
         <input id="idarealogin" name="idarealogin" type="hidden" value="<?php echo $area['area'];?>">
         <input id="idinstitu" name="idinstitu" type="hidden" value="<?php echo $area['idinstitucion'];?>">
           <input id="iduser" name="iduser" type="hidden" value="<?php echo $iduser;?>">
@@ -483,7 +483,7 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
               <a href="../../view/Areas/" class="nav-link">
                 <i class="nav-icon fas fa-square-full"></i>
                 <p>
-                  Áreas
+                  Dependencias
                 </p>
               </a>
             </li>
@@ -594,7 +594,7 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
                         <th>CÉDULA</th>  
                         <th>Apellidos y Nombres</th>
                         <th>Celular</th>
-                        <th>Área</th>
+                        <th>Dependencia</th>
                         <th>Acción</th>
                       </tr>
                     </thead>
@@ -603,17 +603,17 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
                  
                     
                     </tbody>
-                    <tfoot style="background: #2874A6;color:white;">
+                    <!-- <tfoot style="background: #2874A6;color:white;">
                     <tr style="text-align: center;">
                         <th>ID</th>
                         <th>Código</th>
                         <th>CÉDULA</th>  
                         <th>Apellidos y Nombres</th>
                         <th>Celular</th>
-                        <th>Área</th>
+                        <th>Dependencia</th>
                         <th>Acción</th>
                       </tr>
-                    </tfoot>
+                    </tfoot> -->
                   </table>
                 </div>
                 <!-- /.card-body -->

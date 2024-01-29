@@ -790,6 +790,7 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                         <th>ID</th>
                         <th>Usuario</th>  
                         <th>Cédula</th>
+                        <th>Dependencia</th>
                         <th>Email</th>
                         <th>Estado</th>
                         <th >Foto</th>
@@ -800,7 +801,7 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                     </tbody>        
                  
                   
-                    <tfoot style="background: #2874A6;color:white;">
+                    <!-- <tfoot style="background: #2874A6;color:white;">
                     <tr style="text-align: center;">
                         <th>ID</th>
                         <th>Usuario</th>
@@ -810,7 +811,7 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                         <th style="width: 10px;">Foto</th>
                         <th>Acción</th>
                       </tr>
-                    </tfoot>
+                    </tfoot> -->
                   </table>
                 </div>
                 <!-- /.card-body -->

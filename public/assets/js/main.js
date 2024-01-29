@@ -50,6 +50,7 @@ $(document).ready(function () {
       { data: "idusuarios" },
       { data: "nombre" },
       { data: "dni" },
+      { data: "area" },
       { data: "email" },
       {"data": 'estado',"render": function (data, type) {
         let country = '';

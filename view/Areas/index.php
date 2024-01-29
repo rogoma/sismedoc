@@ -265,7 +265,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header" id="modal-header">
-              <h4 style="font-weight:600;color:#1F618D" class="modal-title" id="modal-title">GESTIÓN DE ÁREAS</h4>
+              <h4 style="font-weight:600;color:#1F618D" class="modal-title" id="modal-title">GESTIÓN DE DEPENDENCIA</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">x</span>
               </button>
@@ -281,7 +281,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
                         </div>
                       
                         <div class="form-group">
-                            <label for="inputName">Área</label>
+                            <label for="inputName">Dependencia</label>
                             <input type="text" class="form-control" name="iarea" id="iarea">
                         </div>  
                         <div class="form-group">
@@ -316,7 +316,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>&nbsp;&nbsp;&nbsp;
         <li class="nav-item">
-        <h3 style="margin:8px 0;font-size:20px;font-weight:600">ÁREA: <?php echo $area['area'];?></h3>
+        <h3 style="margin:8px 0;font-size:20px;font-weight:600">Dependencia: <?php echo $area['area'];?></h3>
         <input id="idarealogin" name="idarealogin" type="hidden" value="<?php echo $area['area'];?>">
         <input id="idinstitu" name="idinstitu" type="hidden" value="<?php echo $area['idinstitucion'];?>">
           <input id="iduser" name="iduser" type="hidden" value="<?php echo $iduser;?>">
@@ -425,7 +425,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-square-full"></i>
                 <p>
-                  Áreas
+                  Dependencia
                 </p>
               </a>
             </li>
@@ -505,7 +505,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
         <div class="col-sm-1">
 
           <ol class="breadcrumb float-sm-right">
-            <li style="font-weight:600"><i class="nav-icon fas fa-square"></i>&nbsp;Áreas</li>
+            <li style="font-weight:600"><i class="nav-icon fas fa-square"></i>&nbsp;Dependencia</li>
           </ol>
         </div>
       </div>
@@ -520,7 +520,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
 
               <div class="card card-danger card-outline">
                 <div class="card-header">
-                  <h3 class="card-title" style="font-weight:600; color:#084B8A">Listado de Áreas Registradas</h3>
+                  <h3 class="card-title" style="font-weight:600; color:#084B8A">Listado de Dependencias Registradas</h3>
                   <a style="float:right;width:220px;height:30px" class="btn btn-flat bg-success" data-toggle="modal" id="Nuevoa">
                     <i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Nuevo Registro </a>
                 </div>
@@ -533,7 +533,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
                       <tr style="text-align: center;">
                         <th >ID</th>
                         <th>Código</th>  
-                        <th>Área</th>
+                        <th>Dependencia</th>
                         <th>Acción</th>
                       </tr>
                     </thead>
@@ -542,14 +542,14 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
                  
                     
                     </tbody>
-                    <tfoot style="background-color:#2874A6;color:white;">
+                    <!-- <tfoot style="background-color:#2874A6;color:white;">
                     <tr style="text-align: center;">
                     <th >ID</th>
                         <th>Código</th>  
-                        <th>Área</th>
+                        <th>Dependencia</th>
                         <th>Acción</th>
                       </tr>
-                    </tfoot>
+                    </tfoot> -->
                   </table>
                 </div>
                 <!-- /.card-body -->
