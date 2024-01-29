@@ -90,11 +90,14 @@ switch($opcion){
         break;
     case 4:
         //SELECCIONAMOS DATOS PARA MOSTRAR EN DATATABLE USUARIOS    
-        // $consulta = "SELECT idusuarios, nombre, dni, dni, email, estado FROM usuarios";
-        $consulta = "SELECT usuarios.idusuarios as idusuarios, usuarios.nombre as nombre, usuarios.dni as dni, area.area as area, usuarios.email as email, usuarios.estado as estado, usuarios.foto as foto 
+        // $consulta = "SELECT idusuarios, nombre, dni, dni, email, estado FROM usuarios";        
+        $consulta = "SELECT usuarios.idusuarios as idusuarios, usuarios.nombre as nombre, 
+        usuarios.dni as dni, area.area as area, roles.rol as rol, usuarios.email as email, 
+        usuarios.estado as estado, usuarios.foto as foto 
         FROM empleado INNER JOIN persona ON (empleado.idpersona = persona.idpersona) 
         INNER JOIN area ON (empleado.idareainstitu = area.idarea) 
-        INNER JOIN usuarios ON (persona.dni = usuarios.dni) order by dni;";
+        INNER JOIN usuarios ON (persona.dni = usuarios.dni)
+        INNER JOIN roles ON (usuarios.idroles = roles.idroles) order by dni;";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

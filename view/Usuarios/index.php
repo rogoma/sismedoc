@@ -680,7 +680,7 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
               <a href="../../view/Areas/" class="nav-link">
                 <i class="nav-icon fas fa-square-full"></i>
                 <p>
-                  Áreas
+                  Dependencias
                 </p>
               </a>
             </li>
@@ -733,14 +733,14 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="#ModalInformes" class="nav-link"  data-toggle="modal">
                 <i class="nav-icon fas fa-file-contract"></i>
                 <p>
                   Informes
                 </p>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </nav>
@@ -791,7 +791,8 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                         <th>Usuario</th>  
                         <th>Cédula</th>
                         <th>Dependencia</th>
-                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Email</th>                        
                         <th>Estado</th>
                         <th >Foto</th>
                         <th>Acción</th>

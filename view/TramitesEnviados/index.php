@@ -728,7 +728,7 @@ $resultado1 = mysqli_fetch_assoc($consulta);
               <a href="../../view/Areas/" class="nav-link">
                 <i class="nav-icon fas fa-square-full"></i>
                 <p>
-                  Áreas
+                  Dependencias
                 </p>
               </a>
             </li>
@@ -781,14 +781,14 @@ $resultado1 = mysqli_fetch_assoc($consulta);
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="../../view/Informes/" class="nav-link">
                 <i class="nav-icon fas fa-file-contract"></i>
                 <p>
                   Informes
                 </p>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </nav>

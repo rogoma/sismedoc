@@ -51,7 +51,8 @@ $(document).ready(function () {
       { data: "nombre" },
       { data: "dni" },
       { data: "area" },
-      { data: "email" },
+      { data: "rol" },
+      { data: "email" },      
       {"data": 'estado',"render": function (data, type) {
         let country = '';
         switch (data) {
@@ -1139,7 +1140,7 @@ $("#FormFotop").on('submit', function(e){
   }
 });
 });
-  /*=============================   CRUD DE TABLA ÁREAS  ================================= */
+  /*=============================   CRUD DE TABLA Dependencias  ================================= */
 
   //submit para el Alta y Actualización
   $("#guardara").click(function () {

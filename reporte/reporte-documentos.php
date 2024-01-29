@@ -200,27 +200,27 @@ $result = mysqli_num_rows($consulta);
   </head>
   <body>
     <div id="page_pdf">
-      <table id="factura_head">
+    <table id="factura_head">
         <tr>
           <td>
             <div>
-              <img src="http://localhost/sismedoc/reporte/img/sello.jpg" width="80px" height="80px">
+              <img src="http://localhost/sismedoc/reporte/img/sello1.jpg" width="700px" height="80px">              
             </div>
-          </td>
-          <td >
-            <div align="center">
-              <span class="h2">HOSPITAL ANTONIO CALDAS DOMÍNGUEZ - POMABAMBA</span>
-              <p>Dirección: Carretera Norte KM 1 S/N - Huajtchacra</p>
-              <p>Teléfono: 043-4510028</p>
-              <p>Email:</p>
-            </div>
-          </td>
+          </td>          
           <td>
             <div>
-              <img  src="http://localhost/sismedoc/reporte/img/logo.jpg" width="80px" height="80px">
+              <!-- <img  src="http://localhost/sismedoc/reporte/img/sello2.jpg" width="80px" height="80px"> -->
             </div>
           </td>
         </tr>
+        <td >
+            <div align="center">            
+            <span class="h2">SERVICIO NACIONAL DE SANEAMIENTO AMBIENTAL-SENASA</span>
+              <p>Dirección: MARISCAL ESTIGARRIBIA ESQUINA TACUARY , ASUNCIÓN, PARAGUAY/p>
+              <p>Teléfono: (+595)21 1245425</p>
+              <p>Email:senasa@senasa.gov.py</p>
+            </div>
+          </td>
       </table>
 
       <table id="factura_cliente">
@@ -257,7 +257,7 @@ $result = mysqli_num_rows($consulta);
       <br>
       <p><?php echo $type;?></p>
       <span class="h2">DETALLE DE TABLA DE COLABORADORES REGISTRADOS:</span>
-      <br>
+      <!-- <br> -->
       <br>
       <table id="factura_detalle" border="" height="40">
         <thead >

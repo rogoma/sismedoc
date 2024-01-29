@@ -62,10 +62,10 @@ require_once "../partesuperior.php";
                   <label>Estado del Documento: </label>
                   <select  class="form-control" style="width:300px;height:45px;font-weight:600;text-align:center;font-size:18px" name="cbovista" id="cboreport">                      
                       <option value="0">TODOS</option>
-                      <option value="PENDIENTE">PENDIENTES</option>
-                      <option value="ACEPTADO">ACEPTADOS</option>
-                      <option value="RECHAZADO">RECHAZADOS</option>
-                      <option value="ARCHIVADO">ARCHIVADOS</option>
+                      <option value="PENDIENTE">PENDIENTE</option>
+                      <option value="ACEPTADO">ACEPTADO</option>
+                      <option value="RECHAZADO">RECHAZADO</option>
+                      <option value="ARCHIVADO">ARCHIVADO</option>
                   </select>
               </div>
             </div>

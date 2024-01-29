@@ -208,7 +208,7 @@ $consulta=mysqli_query($conexion,"select * from area;");
       </table>
       <br>
       <span class="h2">DETALLE DE TABLA DE USUARIOS:</span>
-      <br>
+      <!-- <br> -->
       <br>
       <table id="factura_detalle" border="" height="40">
         <thead >
@@ -225,7 +225,7 @@ $consulta=mysqli_query($conexion,"select * from area;");
         <tr height="40">
           <th><?php echo $row['idarea']; ?></th>
           <th><?php echo $row['cod_area']; ?></th>
-          <th><?php echo $row['area']; ?></th>
+          <th align="left"><?php echo $row['area']; ?></th>
         </tr>
         <?php
 					}

@@ -536,14 +536,14 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="../../view/Usuarios/" class="nav-link">
                 <i class="nav-icon fas fa-file-contract"></i>
                 <p>
                   Informes
                 </p>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </nav>

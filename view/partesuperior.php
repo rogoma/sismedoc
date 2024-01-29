@@ -370,7 +370,7 @@
             <a href="../../view/Areas/" class="nav-link">
               <i class="nav-icon fas fa-square-full"></i>
               <p>
-                Áreas
+                Dependencias
               </p>
             </a>
           </li>

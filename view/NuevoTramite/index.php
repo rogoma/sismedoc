@@ -402,7 +402,7 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
               <a href="../../view/Areas/" class="nav-link">
                 <i class="nav-icon fas fa-square-full"></i>
                 <p>
-                  Áreas
+                  Dependencias
                 </p>
               </a>
             </li>
@@ -455,14 +455,14 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="../../view/Usuarios/" class="nav-link">
                 <i class="nav-icon fas fa-file-contract"></i>
                 <p>
                   Informes
                 </p>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </nav>
