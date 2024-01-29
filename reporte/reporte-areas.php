@@ -207,7 +207,7 @@ $consulta=mysqli_query($conexion,"select * from area;");
         </tr>
       </table>
       <br>
-      <span class="h2">DETALLE DE TABLA DE USUARIOS:</span>
+      <span class="h2">DETALLE DE TABLA DE DEPENDENCIAS:</span>
       <!-- <br> -->
       <br>
       <table id="factura_detalle" border="" height="40">
