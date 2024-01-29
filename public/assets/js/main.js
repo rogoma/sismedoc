@@ -1897,7 +1897,7 @@ $("#FormFotop").on('submit', function(e){
         data: { opcion: opcion, id: id, año: año },
         success: function (response) {
           data = $.parseJSON(response);
-          alert(data);
+          // alert(data);
           if (data != 0) {
             $("#celdaexpe").text(data[0]["nro_expediente"]);
             $("#celdanro").text(data[0]["nro_doc"]);
@@ -2206,7 +2206,7 @@ $("#FormFotop").on('submit', function(e){
       $("#guardar").prop("disabled", true);
     }
   });
-// VALIDACION DEL Cédula INGRESADO EN MESA DE PARTES
+// VALIDACION DEL Cédula INGRESADO EN MESA DE ENTRADA
   $("#validar").click(function () {
     opcion = 11;
     var idni = $("#iddni").val();

@@ -537,9 +537,8 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
                       <h3><i class="fas fa-exclamation-triangle text-warning"></i> TRÁMITE NO ENCONTRADO.</h3>
 
                       <p style="font-size:18px;">
-                        No se encontro el trámite con los datos ingresado, puede ser por que no existe un trámite
-                        registrado con esos datos.<br>
-                        <b>Por favor, intente realizar la búsqueda ingresando los datos correctos.<b>
+                        No existe trámite registrado con esos datos.<br>
+                        <b>Por favor, verifique y vuelva a realizar la búsqueda.<b>
                       </p>
                     </div>
                   </div>

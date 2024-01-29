@@ -86,11 +86,11 @@ switch($opcion){
         <body>
             <div id="titu">
                 <h1>HOSPITAL ANTONIO CALDAS DOMÍNGUEZ - POMABAMBA</h1>
-                <h2>MESA DE PARTES VIRTUAL</h2>
+                <h2>MESA DE ENTRADA VIRTUAL</h2>
             </div>
             
                 <p>Estimado(a): <b>'.$usuario.'</b></p><hr>
-                <p>Se le envía este email por parte de la <b>Mesa de Partes Virtual</b> del <b>Hospital Antonio Caldas Domínguez - Pomabamba.</b>
+                <p>Se le envía este email por parte de la <b>MESA DE ENTRADA Virtual</b> del <b>Hospital Antonio Caldas Domínguez - Pomabamba.</b>
                     <br>Para informarle que se realizó satisfactoriamente el cambio de su contraseña:
                 </p>
                 
@@ -120,7 +120,7 @@ switch($opcion){
                 </p>
         </body>
         </html>';
-        $enviado =  $mailSend->metEnviar("MESA DE PARTES VIRTUAL - HACDP","Usuario","$vercorreo","CAMBIO DE CONTRASEÑA", $bodyHTML);
+        $enviado =  $mailSend->metEnviar("MESA DE ENTRADA VIRTUAL - HACDP","Usuario","$vercorreo","CAMBIO DE CONTRASEÑA", $bodyHTML);
         }else{
             $data=1;
         }

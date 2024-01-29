@@ -51,7 +51,7 @@
 
     <div data-v-269f0572="" class="container">
         <div data-v-269f0572="" class="card card-principal">
-            <div data-v-269f0572="" class="card-header font-weight-bold">MESA DE PARTES VIRTUAL</div>
+            <div data-v-269f0572="" class="card-header font-weight-bold">MESA DE ENTRADA VIRTUAL</div>
             <div style="margin-top:10px;">
                 <div class="col-md-2">
                     <button type="button" class="btn btn-outline-dark btn-block"><i class="fa fa-plus"></i>&nbsp;Nuevo
