@@ -8,7 +8,7 @@ $iduser=$_SESSION["idusuarios"];
 $foto=$_SESSION["foto"];
 $dni=$_SESSION["dni"];
 
-$consulta=mysqli_query($conexion,"select idinstitucion, area from empleado e, persona p, areainstitu a, area ae
+$consulta=mysqli_query($conexion,"select idinstitucion, idroles, area from empleado e, persona p, areainstitu a, area ae
 where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
 $area = mysqli_fetch_assoc($consulta);
 

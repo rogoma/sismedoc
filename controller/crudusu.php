@@ -91,7 +91,8 @@ switch($opcion){
     case 4:
         //SELECCIONAMOS DATOS PARA MOSTRAR EN DATATABLE USUARIOS    
         // $consulta = "SELECT idusuarios, nombre, dni, dni, email, estado FROM usuarios";        
-        $consulta = "SELECT usuarios.idusuarios as idusuarios, usuarios.nombre as nombre, 
+        $consulta = "SELECT usuarios.idusuarios as idusuarios, usuarios.nombre as nombre,
+        concat(persona.nombres,' ',persona.ap_paterno,' ',persona.ap_materno) as datos, 
         usuarios.dni as dni, area.area as area, roles.rol as rol, usuarios.email as email, 
         usuarios.estado as estado, usuarios.foto as foto 
         FROM empleado INNER JOIN persona ON (empleado.idpersona = persona.idpersona) 

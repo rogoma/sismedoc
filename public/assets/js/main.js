@@ -48,6 +48,7 @@ $(document).ready(function () {
     },
     columns: [
       { data: "idusuarios" },
+      { data: "datos" },
       { data: "nombre" },
       { data: "dni" },
       { data: "area" },
