@@ -378,7 +378,7 @@
             <a href="../../view/Empleados/" class="nav-link">
               <i class="nav-icon fas fa-user-friends"></i>
               <p>
-                Empleados
+                Funcionarios
               </p>
             </a>
           </li>

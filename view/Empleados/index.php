@@ -491,7 +491,7 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-user-friends"></i>
                 <p>
-                  Empleados
+                  Funcionarios
                 </p>
               </a>
             </li>

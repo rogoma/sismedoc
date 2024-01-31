@@ -10,8 +10,6 @@ $dni=$_SESSION["dni"];
 
 $consulta=mysqli_query($conexion,"select idinstitucion, area from empleado e, persona p, areainstitu a, area ae
 where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
-// $consulta=mysqli_query($conexion,"select idinstitucion, idroles, area from empleado e, persona p, areainstitu a, area ae
-// where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
 $area = mysqli_fetch_assoc($consulta);
 
 $institucion=mysqli_query($conexion,"select * from institucion where idinstitucion='1'");
@@ -385,7 +383,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
               <a href="../../view/Areas/" class="nav-link">
                 <i class="nav-icon fas fa-square-full"></i>
                 <p>
-                  Dependencias
+                  Áreas
                 </p>
               </a>
             </li>
@@ -438,14 +436,14 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
                 </p>
               </a>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a href="../../view/Informes/" class="nav-link">
                 <i class="nav-icon fas fa-file-contract"></i>
                 <p>
                   Informes
                 </p>
               </a>
-            </li> -->
+            </li>
 
           </ul>
         </nav>
@@ -539,8 +537,9 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
                       <h3><i class="fas fa-exclamation-triangle text-warning"></i> TRÁMITE NO ENCONTRADO.</h3>
 
                       <p style="font-size:18px;">
-                        No existe trámite registrado con esos datos.<br>
-                        <b>Por favor, verifique y vuelva a realizar la búsqueda.<b>
+                        No se encontro el trámite con los datos ingresado, puede ser por que no existe un trámite
+                        registrado con esos datos.<br>
+                        <b>Por favor, intente realizar la búsqueda ingresando los datos correctos.<b>
                       </p>
                     </div>
                   </div>

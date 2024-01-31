@@ -10,9 +10,6 @@ $dni=$_SESSION["dni"];
 
 $consulta=mysqli_query($conexion,"select idinstitucion, area from empleado e, persona p, areainstitu a, area ae
 where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
-
-// $consulta=mysqli_query($conexion,"select idinstitucion, idroles,area from empleado e, persona p, areainstitu a, area ae
-// where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
 $area = mysqli_fetch_assoc($consulta);
 
 $institucion=mysqli_query($conexion,"select * from institucion where idinstitucion='1'");
@@ -624,8 +621,7 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
             </span>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <?php if($area['area'] == "ADMIN SISTEMA"){?>            
-          <!-- ?php if($area['idroles'] = '1'){?> -->
+          <?php if($area['area'] == "ADMIN SISTEMA"){?>
           <a class="dropdown-item" id="institut" data-toggle="modal">
                   <i class="feather icon-info text-muted"></i> &nbsp; Institución</a><?php }?>
               <a  class="dropdown-item" id="Fot" data-toggle="modal">
@@ -671,40 +667,40 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                 </p>
               </a>
             </li>
-                <?php if($area['idrol'] = '1'){?>
-                    <li class="nav-item menu-open">
-                      <a href="../../view/Usuarios/" class="nav-link active">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                          Usuarios
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="../../view/Areas/" class="nav-link">
-                        <i class="nav-icon fas fa-square-full"></i>
-                        <p>
-                          Dependencias
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="../../view/Empleados/" class="nav-link">
-                        <i class="nav-icon fas fa-user-friends"></i>
-                        <p>
-                          Funcionarios
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="../../view/Tramites/" class="nav-link">
-                        <i class="nav-icon fas fa-file-medical"></i>
-                        <p>
-                          Trámites
-                        </p>
-                      </a>
-                    </li>
-                <?php }?>
+            <?php if($area['area'] == "ADMIN SISTEMA"){?>
+            <li class="nav-item menu-open">
+              <a href="../../view/Usuarios/" class="nav-link active">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Usuarios
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../../view/Areas/" class="nav-link">
+                <i class="nav-icon fas fa-square-full"></i>
+                <p>
+                  Áreas
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../../view/Empleados/" class="nav-link">
+                <i class="nav-icon fas fa-user-friends"></i>
+                <p>
+                  Funcionarios
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../../view/Tramites/" class="nav-link">
+                <i class="nav-icon fas fa-file-medical"></i>
+                <p>
+                  Trámites
+                </p>
+              </a>
+            </li>
+            <?php }?>
             <li class="nav-item">
               <a href="../../view/NuevoTramite/" class="nav-link">
                 <i class="nav-icon fas fa-user-friends"></i>
@@ -737,14 +733,14 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                 </p>
               </a>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a href="#ModalInformes" class="nav-link"  data-toggle="modal">
                 <i class="nav-icon fas fa-file-contract"></i>
                 <p>
                   Informes
                 </p>
               </a>
-            </li> -->
+            </li>
 
           </ul>
         </nav>
@@ -792,12 +788,9 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                 <thead style="background: #2874A6;color:white;">
                       <tr style="text-align: center;">
                         <th>ID</th>
-                        <th>Nombre y Apellido</th>
                         <th>Usuario</th>  
                         <th>Cédula</th>
-                        <th>Dependencia</th>
-                        <th>Rol</th>
-                        <th>Email</th>                        
+                        <th>Email</th>
                         <th>Estado</th>
                         <th >Foto</th>
                         <th>Acción</th>
@@ -807,7 +800,7 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                     </tbody>        
                  
                   
-                    <!-- <tfoot style="background: #2874A6;color:white;">
+                    <tfoot style="background: #2874A6;color:white;">
                     <tr style="text-align: center;">
                         <th>ID</th>
                         <th>Usuario</th>
@@ -817,7 +810,7 @@ $query2=mysqli_query($conexion,"SELECT * FROM roles");
                         <th style="width: 10px;">Foto</th>
                         <th>Acción</th>
                       </tr>
-                    </tfoot> -->
+                    </tfoot>
                   </table>
                 </div>
                 <!-- /.card-body -->

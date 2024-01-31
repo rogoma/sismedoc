@@ -10,13 +10,13 @@ $iduser=$_SESSION["idusuarios"];
 $foto=$_SESSION["foto"];
 $dni=$_SESSION["dni"];
 
-// $consulta=mysqli_query($conexion,"select idinstitucion, ae.idarea IDa, area from empleado e, persona p, areainstitu a, area ae
-// where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
+$consulta=mysqli_query($conexion,"select idinstitucion, ae.idarea IDa, area from empleado e, persona p, areainstitu a, area ae
+where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
 
-$consulta=mysqli_query($conexion,"SELECT ae.idarea AS ida,ae.area,a.idinstitucion,roles.idroles,roles.rol 
-FROM roles INNER JOIN usuarios ON (roles.idroles = usuarios.idroles) INNER JOIN persona p 
-ON (usuarios.dni = p.dni),area ae, empleado e, areainstitu a 
-WHERE e.idpersona = p.idpersona AND e.idareainstitu = a.idareainstitu AND ae.idarea = a.idarea and dni='$dni';");
+// $consulta=mysqli_query($conexion,"SELECT ae.idarea AS ida,ae.area,a.idinstitucion,roles.idroles,roles.rol 
+// FROM roles INNER JOIN usuarios ON (roles.idroles = usuarios.idroles) INNER JOIN persona p 
+// ON (usuarios.dni = p.dni),area ae, empleado e, areainstitu a 
+// WHERE e.idpersona = p.idpersona AND e.idareainstitu = a.idareainstitu AND ae.idarea = a.idarea and dni='$dni';");
 $area = mysqli_fetch_assoc($consulta);
 
 $institucion=mysqli_query($conexion,"select * from institucion where idinstitucion='1'");
@@ -80,7 +80,7 @@ require_once "../partesuperior.php";
                     <select  class="form-control"  style="width:300px;height:45px;font-weight:600;text-align:center;font-size:18px;" name="cboreport1" id="cboreport1">                      
                         <option value=0>Seleccione</option> 
                         <option value=1>POR AÑO</option>
-                        <option value=2>POR MES Y AÑO</option>
+                        <!-- <option value=2>POR MES Y AÑO</option> -->
                         <option value=3>POR RANGO DE FECHAS</option>
                     </select>
                 </div>
@@ -172,9 +172,8 @@ require_once "../partesuperior.php";
 
         <section class="col-lg-12 connectedSortable">
 
-
-        <!-- ?php if($area['area'] == "ADMIN SISTEMA"){?> -->
-          <?php if($area['idroles'] = '1'){?>
+        <?php if($area['area'] == "ADMIN SISTEMA"){?>
+          <!-- ?php if($area['idroles'] = '1'){?> -->
           
           <div class="card card-outline card-info">
             <div class="card-header">

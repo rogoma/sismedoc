@@ -10,18 +10,14 @@ $dni=$_SESSION["dni"];
 
 $consulta=mysqli_query($conexion,"select idinstitucion, area from empleado e, persona p, areainstitu a, area ae
 where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
-// $consulta=mysqli_query($conexion,"select idinstitucion, idroles, area from empleado e, persona p, areainstitu a, area ae
-// where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
 $area = mysqli_fetch_assoc($consulta);
 
 $institucion=mysqli_query($conexion,"select * from institucion where idinstitucion='1'");
 $row = mysqli_fetch_assoc($institucion);
 
-$institucion1=mysqli_query($conexion,"select * from institucion");
+$query=mysqli_query($conexion,"SELECT * FROM tipodoc");
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,14 +34,39 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
   <link rel="icon shortcut" href="/sismedoc/public/assets/img/logo.png">
   <link rel="stylesheet" href="/sismedoc/public/assets/fonts/ionicons.css">
   <link rel="stylesheet" href="/sismedoc/public/assets/fonts/feather.css">
-  <link rel="stylesheet"
-    href="/sismedoc/public/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet"  href="/sismedoc/public/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="/sismedoc/public/assets/plugins/select2/css/select2.min.css">
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
 
 </head>
-
+<style>
+  #Enviar {
+    height: 40px;
+    font-size:20px;
+  }
+  .file input {
+    display: none;
+  }
+  .file label {
+    font-weight: 500;
+    display: block;
+    padding: 8px 21px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #1184ff;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+  }
+  #validar {
+    margin: 33px 0;
+    width: 80px;
+    height: 40px;
+    margin:33px 0;
+  }
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
 
   <!-- MODAL CONFIRMACION CERRAR SESION -->
@@ -53,7 +74,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Confirmación:</h4>
+          <h4 style="font-weight:600" class="modal-title">Confirmación:</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -62,10 +83,8 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
           <p>¿Seguro que quiere cerrar la Sesión Actual?</p>
         </div>
         <div class="modal-footer justify-content-between">
-          <button style="height:40px;width:120px" type="button" class="btn btn-danger" data-dismiss="modal">No.
-            Continuar </button>
-          <button style="height:40px;width:120px" type="button" class="btn btn-primary" onclick="salir()">Sí.
-            Salir</button>
+          <button style="height:40px;width:120px" type="button" class="btn btn-danger" data-dismiss="modal">No. Continuar </button>
+          <button style="height:40px;width:120px" type="button" class="btn btn-primary" onclick="salir()">Sí. Salir</button>
         </div>
       </div>
     </div>
@@ -274,11 +293,9 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>&nbsp;&nbsp;&nbsp;
         <li class="nav-item">
-          <h3 style="margin:8px 0;font-size:20px;font-weight:600">ÁREA:
-            <?php echo $area['area'];?>
-          </h3>
-          <input id="idarealogin" name="idarealogin" type="hidden" value="<?php echo $area['area'];?>">
-          <input id="idinstitu" name="idinstitu" type="hidden" value="<?php echo $area['idinstitucion'];?>">
+        <h3 style="margin:8px 0;font-size:20px;font-weight:600">ÁREA: <?php echo $area['area'];?></h3>
+        <input id="idarealogin" name="idarealogin" type="hidden" value="<?php echo $area['area'];?>">
+        <input id="idinstitu" name="idinstitu" type="hidden" value="<?php echo $area['idinstitucion'];?>">
           <input id="iduser" name="iduser" type="hidden" value="<?php echo $iduser;?>">
           <input id="dniuser" name="dniuser" type="hidden" value="<?php echo $dni;?>">
         </li>
@@ -312,20 +329,20 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
-          </a>
-        </li>
-        <div class="demo-navbar-user nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <div class="demo-navbar-user nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
             <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
-              <img src="/sismedoc/<?php echo $foto?>" alt class="d-block ui-w-30 rounded-circle">
-              <span class="px-1 mr-lg-2 ml-2 ml-lg-0">
-                <?php echo utf8_decode($_SESSION['nombre']);?>
-              </span>
+                <img src="/sismedoc/<?php echo $foto?>" alt class="d-block ui-w-30 rounded-circle">
+                <span class="px-1 mr-lg-2 ml-2 ml-lg-0">
+                  <?php echo utf8_decode($_SESSION['nombre']);?>
+                </span>
             </span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
           <?php if($area['area'] == "ADMIN SISTEMA"){?>
           <a class="dropdown-item" id="institut" data-toggle="modal">
                   <i class="feather icon-info text-muted"></i> &nbsp; Institución</a><?php }?>
@@ -339,8 +356,8 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
               <a class="dropdown-item" data-toggle="modal" href="#mimodal">
                   <i class="feather icon-power text-danger"></i> &nbsp; Salir</a>
         </div>
-
-        </div>
+      
+    </div>
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -350,8 +367,8 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a class="brand-link navbar-lightblue">
-        <img src="/sismedoc/<?php echo $row['logo']?>" alt="Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
+        <img src="/sismedoc/<?php echo $row['logo']?>" alt="Logo"
+          class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text" style="font-weight:600;font-size:1.4rem;">SENASA</span>
       </a>
 
@@ -385,7 +402,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
               <a href="../../view/Areas/" class="nav-link">
                 <i class="nav-icon fas fa-square-full"></i>
                 <p>
-                  Dependencias
+                  Áreas
                 </p>
               </a>
             </li>
@@ -406,8 +423,8 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
               </a>
             </li>
             <?php }?>
-            <li class="nav-item">
-              <a href="../../view/NuevoTramite/" class="nav-link">
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-user-friends"></i>
                 <p>
                   Nuevo Trámite
@@ -430,22 +447,22 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
                 </p>
               </a>
             </li>
-            <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
+            <li class="nav-item">
+              <a href="../../view/Busqueda/" class="nav-link">
                 <i class="nav-icon fas fa-search-minus"></i>
                 <p>
                   Búsqueda de Trámites
                 </p>
               </a>
             </li>
-            <!-- <li class="nav-item">
-              <a href="../../view/Informes/" class="nav-link">
+            <li class="nav-item">
+              <a href="../../view/Usuarios/" class="nav-link">
                 <i class="nav-icon fas fa-file-contract"></i>
                 <p>
                   Informes
                 </p>
               </a>
-            </li> -->
+            </li>
 
           </ul>
         </nav>
@@ -454,23 +471,23 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
     </aside>
 
     <!-- INICIO DEL CONTENIDO -->
-    <div class="content-wrapper">
+  <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-11">
-              <h1 style="text-align:center;color:black;font-weight:600;">SISTEMA DE MESA DE ENTRADA DE DOCUMENTOS</h1>
-            </div>
-            <div class="col-sm-1">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-11">
+          <h1 style="text-align:center;color:black;font-weight:600;">SISTEMA DE MESA DE ENTRADA DE DOCUMENTOS</h1>
+        </div>
+        <div class="col-sm-1">
 
-              <ol style="width: 110px" class="breadcrumb float-sm-right">
-                <li style="font-weight:600"><i class="nav-icon fas fa-search"></i>&nbsp;Búsqueda</li>
-              </ol>
-            </div>
-          </div>
+          <ol class="breadcrumb float-sm-right">
+            <li style="font-weight:600"><i class="nav-icon fas fa-plus-circle"></i>&nbsp;Nuevo</li>
+          </ol>
         </div>
       </div>
+    </div>
+  </div>
 
       <!-- Main content -->
       <section class="content">
@@ -478,235 +495,242 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
           <div class="row">
             <div class="col-12">
 
-              <div class="card card-primary" id="insert">
+              <div class="card card-danger">
                 <div class="card-header">
-                  <h3 class="card-title" style="font-weight:600; color:white"><i
-                      class="fas fa-search"></i>&nbsp;&nbsp;BÚSQUEDA DE EXPEDIENTES</h3>
+                    <h3 class="card-title" style="font-weight:600; color:white"><i class="fas fa-plus-circle"></i>&nbsp;&nbsp;NUEVO TRÁMITE</h3>
                 </div>
-
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <h3 style="font-size: 18px;">*Para realizar la búsqueda de un documento presentado debe de ingresar el
-                    Número de Expediente del Documento y seleccionar el año de presentación:</h3>
-                  <br>
-                  <div>
-
-                    <form id="FormBuscar">
-                      <div class="form-group row">
-                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label class="etiqueta">Nro Expediente:</label>
-                        <div class="col-sm-2">
-                          <input type="email" class="form-control" id="idexpb"
-                            onkeypress="return validaNumericos(event)" maxlength="6">
-                        </div>
-                        <!-- &nbsp;&nbsp;&nbsp;
-                        <label class="etiqueta">CÉDULA:</label>
-                        <div class="col-sm-2">
-                          <input type="email" class="form-control" id="iddnii"
-                            onkeypress="return validaNumericos(event)" maxlength="8">
-                        </div> -->
-                        <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-                        <label class="etiqueta">Año:</label>
-                        <div class="col-sm-2">
-                          <select style="width:150px; font-weight:700; font-size:20px" class="form-control"
-                            id="idtipob">
-                            <option value="2024">2024</option>
-                          </select>
-
-                        </div>
-
-                        <div class="col-sm-3">
-                          <button style="width:200px;height:40px;font-size:18px;float: right;" type="button"
-                            id="btnBusca" class="btn btn-danger btn-block"><i
-                              class="fa fa-search"></i>&nbsp;&nbsp;&nbsp;BUSCAR</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-              </div>
-
-              <div id="divNoFound">
-                <div class="callout callout-warning">
-                  <div class="row">
-                    <div class="col-sm-3" align="right">
-                      <img style="width: 140px; height: 140px;"
-                        src="/sismedoc/public/assets/img/error-404.png">
-                    </div>
-                    <div class="col-sm-9">
-                      <br>
-                      <h3><i class="fas fa-exclamation-triangle text-warning"></i> TRÁMITE NO ENCONTRADO.</h3>
-
-                      <p style="font-size:18px;">
-                        No existe trámite registrado con esos datos.<br>
-                        <b>Por favor, verifique y vuelva a realizar la búsqueda.<b>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card card-olive" id="dat">
-                <div class="card-header">
-                  <h3 class="card-title"><i class="fas fa-file-pdf "></i>&nbsp;&nbsp;
-                    DATOS DEL TRÁMITE REALIZADO
-                  </h3>
-                </div>
-                <div class="row">
-                  <div class="col-sm-7">
-
-                  </div>
-                  <div class="col-sm-5">
-                    <br>
+                  <!-- /.card-header -->
+                  <div class="card-body">
                     <div class="row">
-                      <div class="col-md-6">
+                      
+                        <div class="col-sm-6">
+                          <div class="card card-primary">
+                            <div class="card-header">
+                              <h3 class="card-title">DATOS DEL REMITENTE</h3>
+                            </div>                      
+                            <div class="card-body">
+                                <form id="formulario-tramite" onsubmit="submitForm(event)" name="formulario-tramite" enctype="multipart/form-data" method="post">
+                                  <label>Tipo de Persona: </label><span style="color: red;font-weight: 600;">(*)</span>
+                                  <div class="row">
+                                      <div class="col-sm-6">
+                                          <div class="custom-control custom-radio">
+                                              <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio" checked value="natural">
+                                              <label for="customRadio1" class="custom-control-label">Natural</label>
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6">
+                                          <div class="custom-control custom-radio">
+                                              <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" value="juridica">
+                                              <label for="customRadio2" class="custom-control-label">Jurídica</label>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div id="mostrar">
+                                      <div class="form-group">
+                                          <input type="hidden" class="form-control" id="idpersona" name="idpersona">
+                                          <label>RUC </label><span style="color: red;font-weight: 600;">
+                                              (*)</span>
+                                          <input type="text" class="form-control" id="idruc" name="idruc"
+                                              onkeypress="return validaNumericos(event)" maxlength="11"
+                                              minlength="11">
+                                      </div>
+                              
+                                      <div class="form-group">
+                                          <label>Entidad </label><span style="color: red;font-weight: 600;">
+                                              (*)</span>
+                                          <input type="text" class="form-control" id="identi" name="identi">
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-sm-4">
+                                          <div class="form-group">
+                                              <label>CÉDULA</label><span style="color: red;font-weight: 600;"> (*)</span>
+                                              <input type="text" class="form-control" onkeypress='return validaNumericos(event)' maxlength="8"
+                                                  minlength="8" name="iddni" id="iddni" required>
+                                          </div>
+                                      </div>
+                                      <div style="padding:0" class="col-sm-2">
+                                          <input id="validar" type="button" class="btn btn-success" value="Validar">
+                                      </div>
+                                      <div class="col-sm-6">
+                                          <div class="form-group">
+                                              <label>Nombres </label><span style="color: red;font-weight: 600;">
+                                                  (*)</span>
+                                              <input type="text" class="form-control" id="idnombre" name="idnombre"
+                                                  required>
+                                          </div>
+                                      </div>
+                                  </div>
+                              
+                                  <div class="row">
+                                      <div class="col-sm-6">
+                                          <div class="form-group">
+                                              <label>Apellido Paterno </label><span
+                                                  style="color: red;font-weight: 600;">
+                                                  (*)</span>
+                                              <input type="text" class="form-control" id="idap" name="idap"
+                                                  required>
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-6">
+                                          <div class="form-group">
+                                              <label>Apellido Materno </label><span
+                                                  style="color: red;font-weight: 600;">
+                                                  (*)</span>
+                                              <input type="text" class="form-control" id="idam" name="idam"
+                                                  required>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label>N° Celular </label><span style="color: red;font-weight: 600;">
+                                          (*)</span>
+                                      <input type="text" class="form-control" id="idcel" 
+                                          onkeypress='return validaNumericos(event)' minlength="9" required name="idcel">
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Dirección </label><span style="color: red;font-weight: 600;">
+                                          (*)</span>
+                                      <input type="text" class="form-control" id="iddirec" required name="iddirec">
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Correo </label><span style="color: red;font-weight: 600;"> (*)</span>
+                                      <input type="text" class="form-control1" id="idcorre" required name="idcorre">
+                                      <i><b id="Vcorreo"></b></i>
+                                  </div>
+                                  <span style="color: #ff0000;font-weight: 600;">Campos Obligatorios (*)</span>
+                            </div>              
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card card-info">
+                              <div class="card-header">
+                                  <h3 class="card-title">DATOS DEL DOCUMENTO</h3>
+                              </div>
+                                                    
+                            <div class="card-body">
+                              <div class="form-group">
+                                <label>Tipo</label><span style="color: red;font-weight: 600;"> (*)</span>
+                                <select 
+                                style="width: 100%;height: 40px;font-weight:600;text-align:center;font-size:20px;"
+                                  name="idtipo" id="idtipo">
+                                    <?php 
+                                    while($datos=mysqli_fetch_array($query))
+                                    {
+                                    ?>
+                                        <option value="<?php echo $datos['idtipodoc']  ?>"> <?php echo $datos['tipodoc'] ?></optiomn>
+                                    <?php 
+                                    }
+                                    ?>
+                                </select>
+                                <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>N° Documento </label><span style="color: red;font-weight: 600;">
+                                            (*)</span>
+                                        <input type="text" class="form-control" id="idnrodoc"
+                                            onkeypress='return validaNumericos(event)' required name="idnrodoc">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>N° Folios </label><span style="color: red;font-weight: 600;">
+                                            (*)</span>
+                                        <input type="number" class="form-control" id="idfolios" required
+                                            name="idfolios">
+                                    </div>
+                                </div>
 
-                        <button type="button" style="height:40px" class="btn btn-primary btn-block" id="btnNew"><i
-                            class="fa fa-search"></i>&nbsp;&nbsp;Nueva Búsqueda</button>
-                      </div>
-                      <div class="col-md-5">
-                        <button type="button" style="height:40px" class="btn btn-danger btn-block" id="btnhistorial"><i
-                            class="fa fa-plus"></i>&nbsp;Mostrar Historial</button>
-                      </div>
-                      <div class="col-md-1">
+                            </div>
+                            <div class="form-group">
+                                <label>Asunto </label><span style="color: red;font-weight: 600;">(*)</span>
+                                <textarea class="form-control" rows="3" id="idasunto"
+                                    placeholder="Ingrese el asunto del documento" required name="idasunto"></textarea>
+                            </div>
 
-                      </div>
+                            <div class="form-group">
+                                <label>Adjuntar archivo (pdf.)</label><span style="color: red;font-weight: 600;">
+                                    (*)</span>
+                                <div class="file">
+                                    <p id="alias"></p>
+                                    <label for="idfile" id="archivo">Elige el Archivo...</label>
+                                    <input type="file" id="idfile" name="idfile" required accept="application/pdf">
+                                </div>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input class="form-check-input" style="width:20px;height:20px;" type="checkbox"
+                                    id="check" name="check" value="option1" required>
+
+                                <label for="customCheckbox4" class="form-check-label">&nbsp;Declaro que la
+                                    información proporcionada es válida y verídica.
+                                    Y Acepto que las comunicaciones sean enviadas a la dirección de corre y
+                                    celular que proporcione.<span style="color: red;font-weight: 600;">(*)</span></label>
+                                
+                            </div>
+                            <br>
+                            <div class="col-sm-12">
+                                <button type="submit" id="Enviar" class="btn btn-block btn-success"
+                                    onclick="return RegistroDocumento()">Enviar Trámite</button>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                      
                     </div>
                   </div>
+                  <!-- /.card-body -->
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="callout callout-success">
+              
 
-                        <table width="100%" border="2" cellspacing="0" cellpadding="5" id="tableDoc">
-                          <tr>
-                            <th colspan="2" style="background:#896A09;text-align:center;color:white">
-                              <h5 style="font-weight:600">DATOS DEL DOCUMENTO</h5>
-                              </font>
-                            </th>
-                          </tr>
-                          <tr style="text-align:center;font-size:20px">
-                            <th style="background:#F2E3A9;">Expediente</th>
-                            <td>
-                              <p id="celdaexpe"></p>
-                            </td>
-                          </tr>
-                          <tr style="text-align:center;font-size:20px">
-                            <th style="background:#F2E3A9;">N° Documento</th>
-                            <td>
-                              <p id="celdanro"></p>
-                            </td>
-                          </tr>
-                          <tr style="text-align:center;font-size:20px">
-                            <th style="background:#F2E3A9;">Tipo</th>
-                            <td>
-                              <p id="celdatipo"></p>
-                            </td>
-                          </tr>
-                          <tr style="text-align:center;font-size:18px">
-                            <th style="background:#F2E3A9">Asunto</th>
-                            <td>
-                              <p id="celdasunto"></p>
-                            </td>
-                          </tr>
-                        </table>
-
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="callout callout-info">
-
-                        <table width="100%" border="2 black " cellspacing="0" cellpadding="5" id="tableRemitente">
-                          <tr>
-                            <th colspan="2" style="background:#BDBDBD ; text-align:center">
-                              <h5 style="font-weight:600">DATOS DEL REMITENTE</h5>
-                              </font>
-                            </th>
-                          </tr>
-                          <tr style="text-align:center;font-size:18px">
-                            <th style="background:#D9D9D8;">CÉDULA</th>
-                            <td>
-                              <p id="celdadni"></p>
-                            </td>
-                          </tr>
-                          <tr style="text-align:center;font-size:18px">
-                            <th style="background:#D9D9D8;r">Apellidos y Nombres</th>
-                            <td>
-                              <p id="celdadatos"></p>
-                            </td>
-                          </tr>
-                          <tr style="text-align:center;font-size:18px">
-                            <th style="background:#D9D9D8;">RUc</th>
-                            <td>
-                              <p id="celdaruc"></p>
-                            </td>
-                          </tr>
-                          <tr style="text-align:center;font-size:18px">
-                            <th style="background:#D9D9D8;">Entidad</th>
-                            <td>
-                              <p id="celdaenti"></p>
-                            </td>
-                          </tr>
-                        </table>
-
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
+            
 
               </div>
 
-              <!-- LINEA DE TIEMPO DEL DOCUMENTO -->
-              <div id="linea">
- 
-              </div>
-            </div>
-            <!-- /.col -->
           </div>
-          <!-- /.row -->
-        </div>
+ 
+        </div>  
 
-    </div>
-    <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
+
   </div>
-  <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
 
-    <strong>Copyright &copy; 2024 <a href="http://localhost/sismedoc/">
-        <?php echo $row['razon']?>
-      </a>.</strong>
-    Todos los derechos reservados.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0
-    </div>
-  </footer>
-  <aside class="control-sidebar control-sidebar-dark">
-  </aside>
+    <footer class="main-footer">
+
+      <strong>Copyright &copy; 2024 <a href="http://localhost/sismedoc/"> <?php echo $row['razon']?></a>.</strong>
+      Todos los derechos reservados.
+      <div class="float-right d-none d-sm-inline-block">
+        <b>Version</b> 1.0
+      </div>
+    </footer>
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
   </div>
   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-
-
+ 
+  
   <script src="/sismedoc/public/assets/plugins/jquery/jquery.min.js"></script>
   <script src="/sismedoc/public/assets/plugins/bootstrap/js/bootstrap.js"></script>
   <script src="/sismedoc/public/assets/dist/js/adminlte.js"></script>
   <script src="/sismedoc/public/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="/sismedoc/public/assets/js/main.js"></script>
-  <!-- DataTables  & Plugins -->
-  <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="/sismedoc/public/assets/js/main.js"></script> 
+<!-- DataTables  & Plugins -->
+  <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script> 
   <script src="/sismedoc/public/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
+  
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="/sismedoc/public/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="/sismedoc/public/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-
-
+  <!-- FUNCIONALIDADES CON AJAX -->
+  <script>
+      let archivo = document.querySelector('#idfile');
+    archivo.addEventListener('change',() => {
+        document.querySelector('#alias').innerText=archivo.files[0].name;
+    });
+  </script>
 </body>
 
 </html>
+  <!-- <script src="/sismedoc/public/assets/plugins/datatables/jquery.dataTables.min.js"></script> -->

@@ -2253,7 +2253,7 @@ $("#FormFotop").on('submit', function(e){
             $("#customRadio2").prop("checked", true);
             $('#mostrar').show();
           }
-        }
+        }cboreport
       },
     });
   }

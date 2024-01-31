@@ -8,8 +8,10 @@ $iduser=$_SESSION["idusuarios"];
 $foto=$_SESSION["foto"];
 $dni=$_SESSION["dni"];
 
-$consulta=mysqli_query($conexion,"select idinstitucion, idroles, area from empleado e, persona p, areainstitu a, area ae
+$consulta=mysqli_query($conexion,"select idinstitucion, area from empleado e, persona p, areainstitu a, area ae
 where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
+// $consulta=mysqli_query($conexion,"select idinstitucion, idroles, area from empleado e, persona p, areainstitu a, area ae
+// where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
 $area = mysqli_fetch_assoc($consulta);
 
 $institucion=mysqli_query($conexion,"select * from institucion where idinstitucion='1'");
@@ -343,8 +345,8 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
             </span>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <!-- ?php if($area['area'] == "ADMIN SISTEMA"){?> -->
-          <?php if($area['idroles'] = '1'){?>
+          <?php if($area['area'] == "ADMIN SISTEMA"){?>
+          <!-- ?php if($area['idroles'] = '1'){?> -->
           <a class="dropdown-item" id="institut" data-toggle="modal">
                   <i class="feather icon-info text-muted"></i> &nbsp; Institución</a><?php }?>
               <a  class="dropdown-item" id="Fot" data-toggle="modal">
@@ -390,8 +392,9 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
                 </p>
               </a>
             </li>
-            <!-- ?php if($area['area'] == "ADMIN SISTEMA"){?> -->
-            <?php if($area['idroles'] = '1'){?>  
+            
+            <?php if($area['area'] == "ADMIN SISTEMA"){?>
+            <!-- ?php if($area['idroles'] = '1'){?>   -->
             <li class="nav-item">
               <a href="../../view/Usuarios/" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
@@ -412,7 +415,7 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
               <a href="../../view/Empleados/" class="nav-link">
                 <i class="nav-icon fas fa-user-friends"></i>
                 <p>
-                  Empleados
+                  Funcionarios
                 </p>
               </a>
             </li>
