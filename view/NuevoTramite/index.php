@@ -340,6 +340,7 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
             <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
                 <img src="/sismedoc/<?php echo $foto?>" alt class="d-block ui-w-30 rounded-circle">
                 <span class="px-1 mr-lg-2 ml-2 ml-lg-0">
+                <?php echo ($_SESSION['idusuarios']);?>
                   <?php echo utf8_decode($_SESSION['nombre']);?>
                 </span>
             </span>
@@ -508,10 +509,24 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
                   <div class="card-body">
                     <div class="row">
                       
+                    <!-- <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
+                      <img src="/sismedoc/<?php echo $foto?>" alt class="d-block ui-w-30 rounded-circle">
+                      <span style="font-size:20px" class="px-1 mr-lg-2 ml-2 ml-lg-0"> -->
+                        <!-- ?php echo ($_SESSION['idusuarios']);?> -->
+                        
+                      <!-- </span>
+                    </span> -->
+
                         <div class="col-sm-6">
                           <div class="card card-primary">
                             <div class="card-header">
                               <h3 class="card-title">DATOS DEL REMITENTE</h3>
+                              <!-- ?php echo ($_SESSION['nombre']);?>
+                              ?php echo ($_SESSION['idusuarios']);?>
+                              <label for="user_id" hidden=false>ID USER:</label> -->
+                              <!-- Muestra el user_id almacenado en la sesión en el cuadro de texto -->
+                              <input hidden=true type="text" id="user_id" name="user_id" value="<?php echo ($_SESSION['idusuarios']);?>" readonly>
+                              
                             </div>                      
                             <div class="card-body">
                                 <form id="formulario-tramite" onsubmit="submitForm(event)" name="formulario-tramite" enctype="multipart/form-data" method="post">
@@ -520,7 +535,7 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
                                       <div class="col-sm-6">
                                           <div class="custom-control custom-radio">
                                               <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio" checked value="natural">
-                                              <label for="customRadio1" class="custom-control-label">Natural</label>
+                                              <label for="customRadio1" class="custom-control-label">Física</label>
                                           </div>
                                       </div>
                                       <div class="col-sm-6">
@@ -530,6 +545,7 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
                                           </div>
                                       </div>
                                   </div>
+
                                   <div id="mostrar">
                                       <div class="form-group">
                                           <input type="hidden" class="form-control" id="idpersona" name="idpersona">
@@ -546,6 +562,7 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
                                           <input type="text" class="form-control" id="identi" name="identi">
                                       </div>
                                   </div>
+                                  
                                   <div class="row">
                                       <div class="col-sm-4">
                                           <div class="form-group">
@@ -607,6 +624,8 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
                             </div>              
                           </div>
                         </div>
+                        
+                        
                         <div class="col-sm-6">
                             <div class="card card-info">
                               <div class="card-header">

@@ -361,6 +361,7 @@ $institucion1=mysqli_query($conexion,"select * from institucion");
             <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
                 <img src="/sismedoc/<?php echo $foto?>" alt class="d-block ui-w-30 rounded-circle">
                 <span class="px-1 mr-lg-2 ml-2 ml-lg-0">
+                  <?php echo ($_SESSION['idusuarios']);?>
                   <?php echo utf8_decode($_SESSION['nombre']);?>
                 </span>
             </span>

@@ -170,10 +170,11 @@ $consulta=mysqli_query($conexion,"SELECT usuarios.idusuarios ID1, persona.dni, u
         <td >
             <!-- <div align="center">            
             <span class="h2">SERVICIO NACIONAL DE SANEAMIENTO AMBIENTAL-SENASA</span>
-              <p>Dirección: MARISCAL ESTIGARRIBIA ESQUINA TACUARY , ASUNCIÓN, PARAGUAY/p>
+              <p>Dirección: MARISCAL ESTIGARRIBIA ESQUINA TACUARY , ASUNCIÓN, PARAGUAY</p>
               <p>Teléfono: (+595)21 1245425</p>
               <p>Email:senasa@senasa.gov.py</p>
             </div> -->
+            <!-- <br> -->
           </td>
       </table>
 

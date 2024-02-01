@@ -170,10 +170,11 @@ where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=
         <td >
             <div align="center">            
             <span class="h2">SERVICIO NACIONAL DE SANEAMIENTO AMBIENTAL-SENASA</span>
-              <p>Dirección: MARISCAL ESTIGARRIBIA ESQUINA TACUARY , ASUNCIÓN, PARAGUAY/p>
-              <p>Teléfono: (+595)21 1245425</p>
-              <p>Email:senasa@senasa.gov.py</p>
+              <!-- <p>Dirección: MARISCAL ESTIGARRIBIA ESQUINA TACUARY , ASUNCIÓN, PARAGUAY</p> -->
+              <p>Teléfono: (+595)21 1245425 - Email:senasa@senasa.gov.py</p>
+              <!-- <p>Email:senasa@senasa.gov.py</p> -->
             </div>
+            <br>
           </td>
       </table>
 

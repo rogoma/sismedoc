@@ -306,7 +306,8 @@
             <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
                 <img src="/sismedoc/<?php echo $foto?>" alt class="d-block ui-w-30 rounded-circle">
                 <span style="font-size:20px" class="px-1 mr-lg-2 ml-2 ml-lg-0">
-                  <?php echo utf8_decode($_SESSION['nombre']);?>
+                  <?php echo ($_SESSION['idusuarios']);?>
+                  <?php echo ($_SESSION['nombre']);?>
                 </span>
             </span>
         </a>

@@ -12,6 +12,7 @@ $apmat=strtoupper(trim($_POST['idam']));
 $cel=trim($_POST['idcel']);
 $direc=strtoupper(trim($_POST['iddirec']));
 $correo=trim($_POST['idcorre']);
+$user_id=trim($_POST['user_id']);
 
 $idper=trim($_POST['idpersona']);
 $tipo=trim($_POST['idtipo']);
@@ -34,8 +35,7 @@ if (move_uploaded_file($file_tmp_name, $new_name_file)) {
     $existe = mysqli_query($conexion,"SELECT count(*) total FROM persona where dni='$dni'");
     $fila1 = mysqli_fetch_assoc($existe);
 
-    if ($fila1['total'] == 0) {
-            
+    if ($fila1['total'] == 0) {            
         $resultado1 = mysqli_query($conexion,"INSERT into persona values (null,'$dni','$appat','$apmat','$nombres','$correo','$cel','$direc','$ruc','$entidad');");
     }else{
         $resultado1 = mysqli_query($conexion,"UPDATE persona SET email='$correo',telefono='$cel',direccion='$direc' where idpersona='$idper'");
@@ -45,7 +45,7 @@ if (move_uploaded_file($file_tmp_name, $new_name_file)) {
     $existe1 = mysqli_query($conexion,"SELECT idpersona ID FROM persona where dni='$dni'");
     $fila2 = mysqli_fetch_assoc($existe1);
     $id = $fila2['ID'];
-    $consulta2 = "INSERT into documento values (null, '$expediente','$nrodoc','$folios','$asunto','PENDIENTE','$nuevo','$id','$tipo','8')";			
+    $consulta2 = "INSERT into documento values (null, '$expediente','$nrodoc','$folios','$asunto','PENDIENTE','$nuevo','$id','$tipo','8','$user_id')";			
     $resultado2 = mysqli_query($conexion,$consulta2);
 
     $inser = mysqli_query($conexion,"INSERT into historial values(null,sysdate(),'$expediente','$dni','DERIVADO','SECRETARÍA','INGRESO DE NUEVO TRÁMITE')");

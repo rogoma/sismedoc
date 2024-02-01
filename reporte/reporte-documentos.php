@@ -216,11 +216,12 @@ $result = mysqli_num_rows($consulta);
         <td >
             <div align="center">            
             <span class="h2">SERVICIO NACIONAL DE SANEAMIENTO AMBIENTAL-SENASA</span>
-              <p>Dirección: MARISCAL ESTIGARRIBIA ESQUINA TACUARY , ASUNCIÓN, PARAGUAY/p>
-              <p>Teléfono: (+595)21 1245425</p>
-              <p>Email:senasa@senasa.gov.py</p>
+              <!-- <p>Dirección: MARISCAL ESTIGARRIBIA ESQUINA TACUARY , ASUNCIÓN, PARAGUAY</p> -->
+              <p>Teléfono: (+595)21 1245425 - Email:senasa@senasa.gov.py</p>
+              <!-- <p>Email:senasa@senasa.gov.py</p> -->
             </div>
-          </td>
+            <br>
+        </td>        
       </table>
 
       <table id="factura_cliente">
@@ -228,7 +229,7 @@ $result = mysqli_num_rows($consulta);
           <td class="info_cliente">
             <div class="round">
               <span style="font-weight:600;" class="h3">DATOS DEL REPORTE</span>
-              <table class="datos_cliente">
+              <table class="datos_cliente">                
                 <tr>
                   <td>
                     <label>Nombre del Reporte:</label>
@@ -256,7 +257,7 @@ $result = mysqli_num_rows($consulta);
       </table>
       <br>
       <!-- <p>?php echo $type;?></p> -->
-      <span class="h2">DETALLE DE TABLA DE COLABORADORES REGISTRADOS:</span>
+      <span class="h2">DETALLE DE TABLA DE TRÁMITES REGISTRADOS:</span>
       <!-- <br> -->
       <br>
       <table id="factura_detalle" border="" height="40">
