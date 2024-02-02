@@ -530,8 +530,8 @@ $resultado1 = mysqli_fetch_assoc($consulta);
               <div class="card card-danger card-outline">
                 <div class="card-header">
                   <h3 class="card-title" style="font-weight:600; color:#084B8A">Listado de Trámites Registrados</h3>
-                  <a style="float:right;width:220px;height:30px" class="btn btn-flat bg-success" data-toggle="modal" id="Nuevoa">
-                    <i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Nuevo Registro </a>
+                  <!-- <a style="float:right;width:220px;height:30px" class="btn btn-flat bg-success" data-toggle="modal" id="Nuevoa">
+                    <i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Nuevo Registro </a> -->
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

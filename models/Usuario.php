@@ -25,6 +25,7 @@
                         $_SESSION["dni"] = $resultado["dni"];
 						$_SESSION["email"] = $resultado["email"];
 						$_SESSION["foto"] = $resultado["foto"];
+						$_SESSION["idroles"] = $resultado["idroles"];
 						header("Location:".Conectar::ruta()."view/Home/");
 						exit(); 
 					} else {

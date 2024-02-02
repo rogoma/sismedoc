@@ -524,12 +524,14 @@ $query=mysqli_query($conexion,"SELECT * FROM tipodoc");
                               <!-- ?php echo ($_SESSION['nombre']);?>
                               ?php echo ($_SESSION['idusuarios']);?>
                               <label for="user_id" hidden=false>ID USER:</label> -->
-                              <!-- Muestra el user_id almacenado en la sesión en el cuadro de texto -->
-                              <input hidden=true type="text" id="user_id" name="user_id" value="<?php echo ($_SESSION['idusuarios']);?>" readonly>
+                              
                               
                             </div>                      
                             <div class="card-body">
                                 <form id="formulario-tramite" onsubmit="submitForm(event)" name="formulario-tramite" enctype="multipart/form-data" method="post">
+                                  <!-- Captura  el user_id almacenado en la sesión -->
+                                  <input hidden="true" type="text" id="userid" name="userid" value="<?php echo ($_SESSION['idusuarios']);?>" readonly>
+
                                   <label>Tipo de Persona: </label><span style="color: red;font-weight: 600;">(*)</span>
                                   <div class="row">
                                       <div class="col-sm-6">

@@ -2,7 +2,6 @@
 
 require_once("../config/conexion2.php");
 
-
 $ruc=trim($_POST['idruc']);
 $entidad=strtoupper(trim($_POST['identi']));
 $dni=trim($_POST['iddni']);
@@ -12,13 +11,14 @@ $apmat=strtoupper(trim($_POST['idam']));
 $cel=trim($_POST['idcel']);
 $direc=strtoupper(trim($_POST['iddirec']));
 $correo=trim($_POST['idcorre']);
-$user_id=trim($_POST['user_id']);
 
 $idper=trim($_POST['idpersona']);
 $tipo=trim($_POST['idtipo']);
 $nrodoc=trim($_POST['idnrodoc']);
 $folios=trim($_POST['idfolios']);
 $asunto=strtoupper(trim($_POST['idasunto']));
+$userid=trim($_POST['userid']);
+
 
 $xped = mysqli_query($conexion,"SELECT gen_nroexpediente() res");
 $fila = mysqli_fetch_assoc($xped);
@@ -45,7 +45,8 @@ if (move_uploaded_file($file_tmp_name, $new_name_file)) {
     $existe1 = mysqli_query($conexion,"SELECT idpersona ID FROM persona where dni='$dni'");
     $fila2 = mysqli_fetch_assoc($existe1);
     $id = $fila2['ID'];
-    $consulta2 = "INSERT into documento values (null, '$expediente','$nrodoc','$folios','$asunto','PENDIENTE','$nuevo','$id','$tipo','8','$user_id')";			
+    //IDUBI = 8 (IDAREA 8 = SECRETARIA DIRECCIÓN-DPPP SE INSERTA COMO)
+    $consulta2 = "INSERT into documento values (null, '$expediente','$nrodoc','$folios','$asunto','PENDIENTE','$nuevo','$id','$tipo','8','$userid')";			
     $resultado2 = mysqli_query($conexion,$consulta2);
 
     $inser = mysqli_query($conexion,"INSERT into historial values(null,sysdate(),'$expediente','$dni','DERIVADO','SECRETARÍA','INGRESO DE NUEVO TRÁMITE')");
@@ -55,6 +56,7 @@ if (move_uploaded_file($file_tmp_name, $new_name_file)) {
         $resu = mysqli_fetch_assoc($iddoc);
         $lastid = $resu['idmax'];
 
+        //INSERTA EXTERIOR COMO ORIGEN EN DERIVACIÓN
         $consulta = "INSERT into derivacion values (null, sysdate(),'EXTERIOR','8','$lastid','')";			
         $resultado = mysqli_query($conexion,$consulta);
         $last = mysqli_insert_id($conexion);       

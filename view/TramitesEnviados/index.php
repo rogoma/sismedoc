@@ -8,6 +8,7 @@ $iduser=$_SESSION["idusuarios"];
 $dni=$_SESSION["dni"];
 $foto=$_SESSION["foto"];
 $dni=$_SESSION["dni"];
+$rol=$_SESSION["idroles"];
 
 $consulta=mysqli_query($conexion,"select idinstitucion, area from empleado e, persona p, areainstitu a, area ae
 where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
@@ -22,7 +23,9 @@ $consulta=mysqli_query($conexion,"select a.idarea ID,area from empleado e, perso
 where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=a.idarea and dni='$dni';");
 $resultado = mysqli_fetch_assoc($consulta);
 
+$id_area_actual = $resultado['ID'];
 $area_actual = $resultado['area'];
+//var_dump($id_area_actual, $area_actual );exit;
 
 
 $area=mysqli_query($conexion,"select a.idarea ID, cod_area, area from institucion i, area a, areainstitu ae where ae.idinstitucion=i.idinstitucion and ae.idarea=a.idarea and area!='$area_actual'");
@@ -858,10 +861,8 @@ $resultado1 = mysqli_fetch_assoc($consulta);
                       </tr>
                     </thead>
                     <tbody id="cuerpo" style="text-align: center;">                           
-                    </tbody>        
-                 
+                    </tbody>                         
                   </table> 
-
                 </div>
                 <!-- /.card-body -->
               </div>

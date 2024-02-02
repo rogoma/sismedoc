@@ -21,7 +21,6 @@ $(document).ready(function () {
   area = $("#idarealogin").val();
   estado = $("#cbovista").val();
   
-  
   bdr = 1;
   $("input[name='customRadio']").change(function () {
       if ($(this).val() == 'juridica') {
@@ -203,6 +202,8 @@ $(document).ready(function () {
       },
     ],
   });
+
+
   /*=============================   MOSTRAR TABLA DE TRÁMITES ENVIADOS================================= */
   tablaTEnviados = $("#tablaTEnviados").DataTable({
     destroy: true,
@@ -240,7 +241,7 @@ $(document).ready(function () {
                 break;
         }
         return  '<span style="font-size:14px"  class="badge ' + country + '">'+ data +'</span> ' ;  
-}
+  }
 },
       {
         defaultContent:
@@ -512,6 +513,7 @@ $(document).ready(function () {
     }
   });
   var fila; //captura la fila, para editar o eliminar
+
 
 /*=============================   INICIO DE CRUD DE LAS TABLAS  ================================= */
 
