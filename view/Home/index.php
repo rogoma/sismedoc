@@ -259,7 +259,6 @@ require_once "../partesuperior.php";
 
     </div>
   </section>
-
 </div>
 <!-- FIN  DEL CONTENIDO PRINCIPAL -->
 <?php require_once ("../parteinferior.php")?>

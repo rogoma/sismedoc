@@ -210,8 +210,7 @@ where e.idpersona=p.idpersona and e.idareainstitu=a.idareainstitu and ae.idarea=
         </tr>
       </table>
       <br>
-      <span class="h2">DETALLE DE TABLA DE COLABORADORES REGISTRADOS:</span>
-      <br>
+      <span class="h2">DETALLE DE TABLA DE FUNCIONARIOS:</span>      
       <br>
       <table id="factura_detalle" border="" height="40">
         <thead >

@@ -71,12 +71,12 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
     </div>
   </div>
 
-<!-- MODAL GESTION DE EMPLEADOS-->
+<!-- MODAL GESTION DE FUNCIONARIOS-->
 <div class="modal fade" id="modalEmpleado"  >
    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 style="font-weight:600" class="modal-title">GESTIÓN DE EMPLEADOS:</h4>
+          <h4 style="font-weight:600" class="modal-title">GESTIÓN DE FUNCIONARIOS:</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -564,7 +564,7 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
         <div class="col-sm-1">
 
           <ol style="width: 110px" class="breadcrumb float-sm-right">
-            <li style="font-weight:600"><i class="nav-icon fas fa-user-friends"></i>&nbsp;Empleados</li>
+            <li style="font-weight:600"><i class="nav-icon fas fa-user-friends"></i>&nbsp;Funcionarios</li>
           </ol>
         </div>
       </div>
@@ -579,7 +579,7 @@ $areaE=mysqli_query($conexion,"select i.idareainstitu ID, area from area a, area
 
               <div class="card card-danger card-outline">
                 <div class="card-header">
-                  <h3 class="card-title" style="font-weight:600; color:#084B8A">Listado de Empleados Registrados</h3>
+                  <h3 class="card-title" style="font-weight:600; color:#084B8A">Listado de Funcionarios Registrados</h3>
                   <a style="float:right;width:220px;height:30px" class="btn btn-flat bg-success" data-toggle="modal" id="NuevoEmpleado">
                     <i class="nav-icon fas fa-plus"></i>&nbsp;&nbsp;Nuevo Registro </a>
                 </div>
